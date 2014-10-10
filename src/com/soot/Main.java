@@ -66,7 +66,11 @@ public class Main {
 		
 		units.add(Jimple.v().newReturnVoidStmt());
 		
-/*		String fileName = SourceLocator.v().getFileNameFor(sClass,
+		for(SootMethod func : sClass.getMethods()) {
+			func.retrieveActiveBody();
+		}
+		
+		String fileName = SourceLocator.v().getFileNameFor(sClass,
 				Options.output_format_class);
 		OutputStream streamOut = new JasminOutputStream(new FileOutputStream(
 				fileName));
@@ -76,7 +80,7 @@ public class Main {
 		JasminClass jasminClass = new soot.jimple.JasminClass(sClass);
 		jasminClass.print(writerOut);
 		writerOut.flush();
-		streamOut.close();*/
+		streamOut.close();
 		//System.out.println("Instrumented method body: " + body);
 	}
 
