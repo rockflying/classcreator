@@ -51,6 +51,7 @@ public class InvokeStaticInstrumenter extends BodyTransformer {
 		}
 
 		String signature = method.getSubSignature();
+		
 		boolean isMain = signature.equals("void main(java.lang.String[])");
 		if (isMain) {
 			stmtIt = units.snapshotIterator();
