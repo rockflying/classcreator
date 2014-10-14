@@ -30,9 +30,15 @@ public class TargetClass {
 		// TODO Auto-generated method stub
 		a = 1;
 		b = 1;
+		print();
+		System.out.println(toString());
 	}
 	
 	protected void func() {
-		bar();
+		foo();
+	}
+	
+	public static void main(String[] args) {
+		new TargetClass().func();
 	}
 }
