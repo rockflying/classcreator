@@ -42,3 +42,4 @@ public class TargetClass {
 		new TargetClass().func();
 	}
 }
+
