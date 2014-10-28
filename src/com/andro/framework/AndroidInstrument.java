@@ -27,10 +27,10 @@ public class AndroidInstrument {
 	public static void main(String[] args) {
 		
 		//prefer Android APK files// -src-prec apk
-		Options.v().set_src_prec(Options.src_prec_apk);
+		//Options.v().set_src_prec(Options.src_prec_apk);
 		
 		//output as APK, too//-f J
-		Options.v().set_output_format(Options.output_format_dex);
+		//Options.v().set_output_format(Options.output_format_dex);
 		
         // resolve the PrintStream and System soot-classes
 		Scene.v().addBasicClass("java.io.PrintStream",SootClass.SIGNATURES);
