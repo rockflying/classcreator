@@ -2,9 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="F:/xuhao/soot/lib/sootclasses-2.5.0.jar" sourcepath="/soot"/>
-	<classpathentry kind="lib" path="F:/xuhao/soot/lib/jasminclasses-2.5.0.jar"/>
-	<classpathentry kind="lib" path="F:/xuhao/soot/lib/java_cup.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/soot"/>
 	<classpathentry kind="lib" path="F:/xuhao/soot/lib/polyglot.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
