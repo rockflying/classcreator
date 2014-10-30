@@ -8,6 +8,7 @@ import soot.BodyTransformer;
 import soot.PackManager;
 import soot.Transform;
 import soot.Unit;
+import soot.callgraph.CallGraphExample;
 import soot.jimple.Stmt;
 import soot.tagkit.AttributeValueException;
 import soot.tagkit.Tag;
@@ -15,8 +16,14 @@ import soot.util.Chain;
 
 public class JimpleInstrumenter {
 	public static void main(String[] args) {
+		String path = JimpleInstrumenter.class.getResource("/").getPath();
 		String[] argv = {
-			"com.jimple.TestClass"	
+			"-cp", path,
+			"-pp",
+			"com.jimple.TestClass",
+			"-print-tags",
+			//"-xml-attributes",
+			"-annot-nullpointer",
 		};
 		
 		PackManager.v().getPack("jtp").add(new Transform("jtp.instru", new BodyTransformer() {
@@ -46,6 +53,7 @@ public class JimpleInstrumenter {
 								// TODO Auto-generated method stub
 								return "TAGGGGGG".getBytes();
 							}});
+						System.out.println(stmt.getTags());
 					}
 				}
 			}

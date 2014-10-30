@@ -1,13 +1,36 @@
 package com.soot.analysis;
-import soot.*;
-import soot.jimple.*;
-import soot.options.*;
-import soot.util.*;
-import soot.dava.*;
-import soot.grimp.*;
-
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.Arrays;
-import java.io.*;
+
+import soot.ArrayType;
+import soot.Local;
+import soot.Modifier;
+import soot.Printer;
+import soot.RefType;
+import soot.Scene;
+import soot.SootClass;
+import soot.SootMethod;
+import soot.SourceLocator;
+import soot.Type;
+import soot.Unit;
+import soot.VoidType;
+import soot.dava.Dava;
+import soot.dava.DavaBody;
+import soot.dava.DavaPrinter;
+import soot.grimp.Grimp;
+import soot.grimp.GrimpBody;
+import soot.jimple.JasminClass;
+import soot.jimple.Jimple;
+import soot.jimple.JimpleBody;
+import soot.jimple.StringConstant;
+import soot.options.Options;
+import soot.util.Chain;
+import soot.util.JasminOutputStream;
 
 public class GenHelloWorld
 {
@@ -35,6 +58,7 @@ public class GenHelloWorld
 		// Load dependencies
 		Scene.v().loadClassAndSupport("java.lang.Object");
 		Scene.v().loadClassAndSupport("java.lang.System");
+		Scene.v().loadNecessaryClasses();
 		
 		// Create the class HelloWorld as a public class that extends Object
 		SootClass sClass = new SootClass("HelloWorld", Modifier.PUBLIC);
@@ -63,7 +87,7 @@ public class GenHelloWorld
 		// Create a local to hold the main method argument
 		// Note: In general for any use of objects or basic-types, must generate a local to
 		// hold that in the method body
-		Local frm1 = Jimple.v().newLocal("frm1", ArrayType.v(RefType.v("java.lang.String"), 1));
+		Local frm1 = Jimple.v().newLocal("frmxxx", ArrayType.v(RefType.v("java.lang.String"), 1));
 		body.getLocals().add(frm1);
 		
 		// Create a local to hold the PrintStream System.out
@@ -71,7 +95,7 @@ public class GenHelloWorld
 		body.getLocals().add(tmpRef);
 		
 		// Create a unit (or statement) that assigns main's formal param into the local arg
-		Chain units = body.getUnits();
+		Chain<Unit> units = body.getUnits();
 		units.add(Jimple.v().newIdentityStmt(frm1,
 				Jimple.v().newParameterRef(ArrayType.v
 						(RefType.v("java.lang.String"), 1), 0)));

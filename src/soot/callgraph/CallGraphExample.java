@@ -22,7 +22,7 @@ public class CallGraphExample
 	   List<String> argsList = new ArrayList<String>(Arrays.asList(args));
 	   String path = CallGraphExample.class.getResource("/").getPath();
 	   argsList.addAll(Arrays.asList(new String[]{
-			   "-w",
+			   "-w", 
 			   "-pp",
 			   "-cp", path,
 			   "-main-class",

@@ -13,4 +13,5 @@ public class LiveVarsClass {
 		}
 		System.out.println(x);
 	}
+	
 }
