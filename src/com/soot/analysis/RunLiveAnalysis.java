@@ -28,14 +28,15 @@ public class RunLiveAnalysis
 		Options.v().set_soot_classpath(".;F:\\workspace\\soot-tutorial\\bin");
 		Options.v().set_prepend_classpath(true);
 		Options.v().set_whole_program(true);
+		Scene.v().addBasicClass(args[0], SootClass.SIGNATURES);
 		Scene.v().loadNecessaryClasses();
 		
-		Scene.v().addBasicClass(args[0], SootClass.SIGNATURES);
-		Scene.v().addBasicClass(args[0], SootClass.SIGNATURES);
+		
+
 		SootClass sClass = Scene.v().loadClass(args[0], SootClass.SIGNATURES);
 		sClass.setApplicationClass();
 		
-		Iterator<?> methodIt = sClass.getMethods().iterator();
+		Iterator<SootMethod> methodIt = sClass.getMethods().iterator();
 		while (methodIt.hasNext()) {
 			SootMethod m = (SootMethod)methodIt.next();
 			Body b = m.retrieveActiveBody();
@@ -44,6 +45,7 @@ public class RunLiveAnalysis
 			System.out.println(m.getName());
 			
 			UnitGraph graph = new ExceptionalUnitGraph(b);
+			System.out.println(graph);
 			SimpleLiveLocals sll = new SimpleLiveLocals(graph);
 			
 			Iterator<?> gIt = graph.iterator();

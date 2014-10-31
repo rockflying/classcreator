@@ -44,7 +44,7 @@ public class VeryBusyExpsTagger extends BodyTransformer {
 	protected void internalTransform(Body b, String phaseName, Map<String, String> options) {
 		VeryBusyExpressions vbe = new SimpleVeryBusyExpressions(new ExceptionalUnitGraph(b));
 		
-		Iterator<?> unitIt = b.getUnits().iterator();
+		Iterator<Unit> unitIt = b.getUnits().iterator();
 		while (unitIt.hasNext()) {
 			Unit u = (Unit)unitIt.next();
 			Iterator<?> veryBusyIt = vbe.getBusyExpressionsAfter(u).iterator();
@@ -52,7 +52,7 @@ public class VeryBusyExpsTagger extends BodyTransformer {
 				Value v = (Value)veryBusyIt.next();
 				u.addTag(new StringTag("Busy expression: " + v, TAG_TYPE));
 				
-				Iterator<?> usesIt = u.getUseBoxes().iterator();
+				Iterator<ValueBox> usesIt = u.getUseBoxes().iterator();
 				while (usesIt.hasNext()) {
 					ValueBox use = (ValueBox)usesIt.next();					
 					if (use.getValue().equivTo(v))
