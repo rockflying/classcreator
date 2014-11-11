@@ -22,7 +22,7 @@ public class JimpleInstrumenter {
 			"-pp",
 			"com.jimple.TestClass",
 			"-print-tags",
-			//"-xml-attributes",
+			"-xml-attributes",
 			"-annot-nullpointer",
 		};
 		
@@ -51,7 +51,7 @@ public class JimpleInstrumenter {
 							public byte[] getValue()
 									throws AttributeValueException {
 								// TODO Auto-generated method stub
-								return "TAGGGGGG".getBytes();
+								return "100".getBytes();
 							}});
 						System.out.println(stmt.getTags());
 					}
