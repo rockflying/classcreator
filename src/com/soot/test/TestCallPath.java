@@ -45,26 +45,32 @@ public class TestCallPath {
 				for(Iterator<Unit> iter = b.getUnits().snapshotIterator(); iter.hasNext();) {
 					Unit unit = iter.next();
 					
-							unit.apply(new AbstractStmtSwitch() {
-								
-								@Override
-								public void caseAssignStmt(AssignStmt stmt) {
-									System.out.println("--------------");
-									System.out.println(stmt);
-//									System.out.println(stmt.getLeftOp() +"  vs  "+ stmt.getRightOp());
-									if(stmt.containsInvokeExpr()) {
-										String name = stmt.getInvokeExpr().getMethod().getName();
-										System.out.println("s_"+clazz.getJavaStyleName()+"_"+name+"_4");
-									}
-//									System.out.println(stmt.getBoxesPointingToThis());
-									if (stmt.containsFieldRef()
-									    && stmt.getLeftOp().equivTo(stmt.getFieldRef())) {
-										String field_name = stmt.getFieldRef().getField().getName();
-//										b.getMethod();
-									}
-								}
-							});
-//					System.out.println(unit);
+					unit.apply(new AbstractStmtSwitch() {
+
+						@Override
+						public void caseAssignStmt(AssignStmt stmt) {
+							System.out.println("--------------");
+							System.out.println(stmt);
+							// System.out.println(stmt.getLeftOp()
+							// +"  vs  "+ stmt.getRightOp());
+							if (stmt.containsInvokeExpr()) {
+								String name = stmt.getInvokeExpr()
+										.getMethod().getName();
+								System.out.println("s_"
+										+ clazz.getJavaStyleName()
+										+ "_" + name + "_4");
+							}
+							// System.out.println(stmt.getBoxesPointingToThis());
+							if (stmt.containsFieldRef()
+									&& stmt.getLeftOp().equivTo(
+											stmt.getFieldRef())) {
+								String field_name = stmt.getFieldRef()
+										.getField().getName();
+								// b.getMethod();
+							}
+						}
+					});
+				// System.out.println(unit);
 				}
 			}
 		}));
